@@ -3,115 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ILO 190 İmzala - İş Yerinde Şiddete Son</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-</head>
-<body>
+    <title>ILO 190 Uygulansın | İmza Kampanyası</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* TASARIM (CSS) */
+        :root { --primary: #e63946; --dark: #1d3557; --bg: #f8f9fa; }
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background: var(--bg); color: #333; }
+        
+        .container { display: flex; flex-wrap: wrap; max-width: 1100px; margin: 40px auto; gap: 40px; padding: 20px; }
+        
+        /* Sol Taraf */
+        .petition-area { flex: 2; min-width: 300px; }
+        h1 { font-size: 2rem; color: var(--dark); line-height: 1.2; margin-bottom: 20px; }
+        .badge { background: #ffe5e5; color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+        .paper { background: white; padding: 40px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Times New Roman', serif; line-height: 1.6; font-size: 1.1rem; }
+        
+        /* Sağ Taraf Form */
+        .form-area { flex: 1; min-width: 300px; }
+        .form-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: sticky; top: 20px; border-top: 6px solid var(--primary); }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 5px; }
+        .input-group input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
+        
+        .kvkk-row { margin: 20px 0; font-size: 0.85rem; display: flex; gap: 10px; }
+        .kvkk-link { color: var(--primary); text-decoration: underline; cursor: pointer; font-weight: bold; }
+        
+        button.sign-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 16px; font-size: 1.2rem; font-weight: 800; border-radius: 6px; cursor: pointer; transition: 0.3s; }
+        button.sign-btn:hover { background: #d62828; }
+        
+        /* MODAL ORTAK STİLLER */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
+        .modal-box { background: white; width: 90%; max-width: 600px; border-radius: 10px; padding: 0; display: flex; flex-direction: column; max-height: 90vh; }
+        .modal-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .modal-content { padding: 20px; overflow-y: auto; line-height: 1.6; }
+        .modal-footer { padding: 20px; border-top: 1px solid #eee; text-align: right; background: #f9f9f9; border-radius: 0 0 10px 10px; }
+        .close-btn { cursor: pointer; font-size: 1.5rem; }
 
-<div class="main-container">
-    
-    <div class="petition-section">
-        <div class="header-box">
-            <span class="tag">İMZA KAMPANYASI</span>
-            <h1>ILO 190 "İş Yerinde Şiddet ve Taciz" Sözleşmesi Eksiksiz Uygulansın</h1>
-        </div>
-
-        <div class="paper">
-            <h3>TÜRKİYE BÜYÜK MİLLET MECLİSİ BAŞKANLIĞINA</h3>
-            <p><strong>KONU:</strong> ILO 190 Sayılı Sözleşme'nin Türkiye'deki uygulamasının denetlenmesi ve etkinleştirilmesi talebidir.</p>
-            <br>
-            <p>Sayın Başkanlık,</p>
-            <p>Türkiye Cumhuriyeti tarafından onaylanan ve yürürlükte olan Uluslararası Çalışma Örgütü’nün (ILO) 190 sayılı "İş Yerinde Şiddet ve Taciz Sözleşmesi", çalışma hayatında şiddetin her türlüsünü yasaklamaktadır.</p>
-            <p>Aşağıda imzası bulunan bir yurttaş olarak;</p>
-            <ul>
-                <li>İş yerinde psikolojik taciz (mobbing) ve fiziksel şiddete karşı denetimlerin artırılmasını,</li>
-                <li>Yasaların ILO 190 standartlarına tam uyumlu hale getirilmesini,</li>
-                <li>Çalışanların güvenliğinin "sıfır tolerans" ilkesiyle sağlanmasını talep ediyorum.</li>
-            </ul>
-            <p>Gereğini saygılarımla arz ederim.</p>
-        </div>
-    </div>
-
-    <div class="form-section">
-        <div class="form-card">
-            <h2>İmza Ver, Destek Ol</h2>
-            <p class="subtext">Hedef: 10.000 İmza</p>
-            <div class="bar-bg"><div class="bar-fill"></div></div>
-
-            <form action="https://formsubmit.co/SENIN_EMAIL_ADRESINI_BURAYA_YAZ" method="POST">
-                
-                <input type="hidden" name="_subject" value="YENİ İMZA: ILO 190 Kampanyası">
-                <input type="hidden" name="_captcha" value="false"> <input type="hidden" name="_template" value="table">
-                <div class="input-group">
-                    <label>Adınız</label>
-                    <input type="text" name="Ad" required placeholder="Adınız">
-                </div>
-
-                <div class="input-group">
-                    <label>Soyadınız</label>
-                    <input type="text" name="Soyad" required placeholder="Soyadınız">
-                </div>
-
-                <div class="input-group">
-                    <label>E-posta Adresi</label>
-                    <input type="email" name="Email" required placeholder="E-posta adresiniz">
-                </div>
-
-                <div class="kvkk-container">
-                    <input type="checkbox" id="kvkkCheck" required disabled>
-                    <label for="kvkkCheck">
-                        <span class="link" onclick="openModal()">KVKK Aydınlatma Metni</span>'ni okudum ve onaylıyorum.
-                    </label>
-                </div>
-
-                <button type="submit" class="submit-btn">DİLEKÇEYİ İMZALA</button>
-            </form>
-            <p class="security">🔒 Bilgileriniz 6698 Sayılı KVKK kapsamında korunur.</p>
-        </div>
-    </div>
-</div>
-
-<div id="modal" class="modal-overlay">
-    <div class="modal-box">
-        <span class="close-icon" onclick="closeModal()">&times;</span>
-        <h3>Kişisel Verilerin Korunması Hakkında</h3>
-        <div class="modal-text">
-            <p><strong>Veri Sorumlusu:</strong> [ADIN SOYADIN VEYA TOPLULUĞUN ADI]</p>
-            <p><strong>Veri İşleme Amacı:</strong> Adınız, soyadınız ve e-posta adresiniz; yalnızca ILO 190 İmza Kampanyası kapsamında TBMM ve ilgili bakanlıklara iletilecek dilekçede imza sahibi olduğunuzu doğrulamak amacıyla işlenmektedir.</p>
-            <p><strong>Veri Aktarımı:</strong> Verileriniz, dilekçenin muhatabı olan resmi makamlar dışında hiçbir ticari kurum veya 3. şahısla paylaşılmayacaktır.</p>
-            <p>KVKK 11. madde uyarınca verilerinizin silinmesini talep etme hakkınız saklıdır.</p>
-        </div>
-        <button class="agree-btn" onclick="acceptKvkk()">Okudum, Anladım, Onaylıyorum</button>
-    </div>
-</div>
-
-<script>
-    // JavaScript Kodları (Formun içine gömüldü)
-    const modal = document.getElementById('modal');
-    const checkbox = document.getElementById('kvkkCheck');
-
-    function openModal() {
-        modal.style.display = 'flex';
-    }
-
-    function closeModal() {
-        modal.style.display = 'none';
-    }
-
-    function acceptKvkk() {
-        checkbox.disabled = false; // Kutunun kilidini aç
-        checkbox.checked = true;   // Kutuyu işaretle
-        closeModal();              // Pencereyi kapat
-    }
-
-    // Dışarı tıklandığında kapatma
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-</script>
-
-</body>
-</html>
+        /* CİMER ÖZEL ALANI */
+        .cimer-text-area { width: 100%; height: 150px; padding: 10px; border: 1px solid #ccc; background: #f1f1f1; border-radius: 5px; font-family: 'Courier New', monospace; font-size: 0.9rem; resize: none; margin-bottom: 15px; }
+        .action-btn { padding: 12px 20px; border-radius: 5px; font-weight: bold;
