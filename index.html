@@ -6,19 +6,19 @@
     <title>ILO 190 Uygulansın | İmza Kampanyası</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        /* TASARIM (CSS) */
+        /* --- TASARIM (CSS) --- */
         :root { --primary: #e63946; --dark: #1d3557; --bg: #f8f9fa; }
         body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background: var(--bg); color: #333; }
         
         .container { display: flex; flex-wrap: wrap; max-width: 1100px; margin: 40px auto; gap: 40px; padding: 20px; }
         
-        /* Sol Taraf */
+        /* Sol Taraf (Dilekçe) */
         .petition-area { flex: 2; min-width: 300px; }
         h1 { font-size: 2rem; color: var(--dark); line-height: 1.2; margin-bottom: 20px; }
         .badge { background: #ffe5e5; color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
         .paper { background: white; padding: 40px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Times New Roman', serif; line-height: 1.6; font-size: 1.1rem; }
         
-        /* Sağ Taraf Form */
+        /* Sağ Taraf (Form) */
         .form-area { flex: 1; min-width: 300px; }
         .form-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: sticky; top: 20px; border-top: 6px solid var(--primary); }
         .input-group { margin-bottom: 15px; }
@@ -32,7 +32,7 @@
         button.sign-btn:hover { background: #d62828; }
         button.sign-btn:disabled { background: #ccc; cursor: wait; }
         
-        /* Modal Stilleri */
+        /* Modal (Pop-up) Stilleri */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
         .modal-box { background: white; width: 90%; max-width: 600px; border-radius: 10px; padding: 0; display: flex; flex-direction: column; max-height: 90vh; }
         .modal-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
@@ -64,7 +64,7 @@ Gereğini bilgilerinize arz ederim.
         <div class="form-area">
             <div class="form-card">
                 <h2>İmzala & CİMER'e Gönder</h2>
-                <p style="color:#666; font-size:0.9rem;">İmzanız kaydedilecek, dilekçe metni kopyalanacak ve otomatik olarak CİMER açılacaktır.</p>
+                <p style="color:#666; font-size:0.9rem;">İmzanız platformumuza kaydedilecek, ardından dilekçe metni kopyalanarak CİMER sayfası açılacaktır.</p>
                 
                 <form id="campaignForm">
                     <div class="input-group">
@@ -97,23 +97,37 @@ Gereğini bilgilerinize arz ederim.
     <div id="kvkkModal" class="modal-overlay">
         <div class="modal-box">
             <div class="modal-header">
-                <h2>Aydınlatma Metni</h2>
+                <h2>Aydınlatma ve Açık Rıza Metni</h2>
                 <span class="close-btn" onclick="closeKvkk()">&times;</span>
             </div>
             <div class="modal-content">
-                <p><strong>Veri Sorumlusu:</strong> [ADINIZ SOYADINIZ]</p>
-                <p>Bu form aracılığıyla toplanan ad, soyad ve e-posta bilgileriniz, yalnızca ILO 190 imza kampanyasının takibi amacıyla işlenmektedir. Verileriniz kampanya süreci sonunda imha edilecektir.</p>
+                <p><strong>Veri Sorumlusu:</strong> Burada Mobbing Var Platformu</p>
+                
+                <p><strong>1. Verilerin İşlenme Amacı:</strong><br>
+                Burada Mobbing Var Platformu olarak; ILO 190 imza kampanyası kapsamında ilettiğiniz Ad, Soyad ve E-posta verileriniz, yalnızca söz konusu kampanyanın destekçi sayısını doğrulamak, mükerrer imzaları önlemek ve ilgili kamu kuruluşlarına (TBMM, CİMER vb.) toplu bildirimde bulunmak amacıyla 6698 sayılı KVKK’ya uygun olarak işlenmektedir.</p>
+
+                <p><strong>2. Verilerin Aktarımı ve Saklanması:</strong><br>
+                Kişisel verileriniz, dilekçe hakkının kullanılması çerçevesinde yalnızca yetkili kamu mercileri ile paylaşılabilir. Bunun dışında verileriniz 3. şahıs veya ticari kuruluşlarla asla paylaşılmayacak; kampanya süreci sona erdiğinde güvenli şekilde imha edilecektir.</p>
+
+                <p><strong>3. Haklarınız:</strong><br>
+                KVKK 11. madde uyarınca verilerinizin silinmesini talep etme hakkınız saklıdır.</p>
             </div>
             <div class="modal-footer">
-                <button class="action-btn" onclick="acceptKvkk()">Okudum, Onaylıyorum</button>
+                <button class="action-btn" onclick="acceptKvkk()">Okudum, Platforma Güveniyorum ve Onaylıyorum</button>
             </div>
         </div>
     </div>
 
     <script>
         // --- AYARLAR ---
-        // ⚠️ 2. E-POSTANI BURAYA YAZ (ajax/ ekli kalmalı)
-        const FORM_ENDPOINT = "https://formsubmit.co/ajax/SENIN_EMAIL_ADRESINI_BURAYA_YAZ";
+        
+        // ⚠️ DİKKAT: Aşağıdaki mail adresinin doğruluğunu lütfen kontrol et.
+        // FormSubmit servisinin çalışması için adresin tam olması gerekir.
+        // Örn: info@buradamobbingvar.com gibi.
+        
+        const FORM_EMAIL = "info@buradamobbingvar.com"; 
+        
+        const FORM_ENDPOINT = "https://formsubmit.co/ajax/" + FORM_EMAIL;
         const CIMER_URL = "https://www.cimer.gov.tr";
 
         // --- DEĞİŞKENLER ---
@@ -132,43 +146,43 @@ Gereğini bilgilerinize arz ederim.
             closeKvkk();
         }
 
-        // --- FORM GÖNDERİMİ VE YÖNLENDİRME (SİHİR BURADA) ---
+        // --- FORM GÖNDERİMİ VE CİMER YÖNLENDİRMESİ ---
         form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Sayfanın yenilenmesini engelle
+            e.preventDefault(); // Sayfa yenilenmesini durdur
             
             submitBtn.disabled = true;
-            submitBtn.innerText = "İşleniyor...";
+            submitBtn.innerText = "İmzanız Kaydediliyor...";
 
-            // 1. ADIM: Metni Kopyala
+            // 1. ADIM: Dilekçe Metnini Kopyala
             navigator.clipboard.writeText(dilekceMetni).then(() => {
                 
-                // 2. ADIM: Veriyi Kaydet (Arka planda mail at)
+                // 2. ADIM: İmzayı Mail Olarak Gönder (Ajax)
                 const formData = new FormData(form);
                 fetch(FORM_ENDPOINT, {
                     method: "POST",
                     body: formData
                 })
                 .then(response => {
-                    // 3. ADIM: Kullanıcıyı Bilgilendir ve Yönlendir
-                    alert("✅ İŞLEM BAŞARILI!\n\n1. Dilekçe metni otomatik kopyalandı.\n2. Şimdi CİMER sayfası açılacak.\n3. 'Yapıştır' diyerek başvurunuzu tamamlayın.");
+                    // 3. ADIM: Başarılı İse Kullanıcıyı Yönlendir
+                    alert("✅ İŞLEM BAŞARILI!\n\n1. Dilekçe metni hafızaya kopyalandı.\n2. Şimdi CİMER sayfası açılıyor.\n3. CİMER'de 'İstek/Öneri' bölümüne sağ tıklayıp 'Yapıştır' demeniz yeterlidir.");
                     
-                    // CİMER'e Yönlendir
                     window.location.href = CIMER_URL;
                 })
                 .catch(error => {
+                    // Hata olsa bile kullanıcıyı mağdur etmemek için CİMER'e gönderiyoruz
                     console.error('Hata:', error);
-                    alert("Bir hata oluştu ama CİMER'e yönlendiriliyorsunuz. Lütfen metni manuel kopyalayın.");
+                    alert("İmzanız alındı ancak bağlantıda küçük bir sorun oldu. Yine de CİMER'e yönlendiriliyorsunuz. Lütfen metni oraya yapıştırın.");
                     window.location.href = CIMER_URL;
                 });
 
             }).catch(err => {
-                // Kopyalama başarısız olsa bile yönlendir
-                alert("Metin kopyalanamadı! Lütfen sol taraftaki metni kopyalayıp CİMER'e gidin.");
+                // Kopyalama başarısız olursa manuel uyarı ver
+                alert("Metin kopyalanamadı! Lütfen soldaki metni kendiniz kopyalayıp CİMER'e gidin.");
                 window.location.href = CIMER_URL;
             });
         });
 
-        // Dışarı tıklama
+        // Modal dışına tıklayınca kapatma
         window.onclick = function(event) { if (event.target == modal) closeKvkk(); }
     </script>
 </body>
