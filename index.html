@@ -41,4 +41,155 @@
 
         /* CİMER ÖZEL ALANI */
         .cimer-text-area { width: 100%; height: 150px; padding: 10px; border: 1px solid #ccc; background: #f1f1f1; border-radius: 5px; font-family: 'Courier New', monospace; font-size: 0.9rem; resize: none; margin-bottom: 15px; }
-        .action-btn { padding: 12px 20px; border-radius: 5px; font-weight: bold;
+        .action-btn { padding: 12px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; border: none; font-size: 1rem; }
+        .copy-btn { background: #457b9d; color: white; margin-right: 10px; }
+        .cimer-go-btn { background: #e63946; color: white; text-decoration: none; display: inline-block; padding: 12px 20px; border-radius: 5px; font-weight: bold; }
+        
+        @media (max-width: 768px) { .container { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="petition-area">
+            <span class="badge">#ILO190İmzala</span>
+            <h1>İş Yerinde Şiddet ve Tacize Karşı: <br>ILO 190 Sözleşmesi Eksiksiz Uygulansın</h1>
+            <div class="paper">
+                <h3>TÜRKİYE BÜYÜK MİLLET MECLİSİ BAŞKANLIĞINA</h3>
+                <br>
+                <p><strong>KONU:</strong> ILO 190 sayılı Sözleşme'nin iç hukuktaki uygulamasının denetlenmesi talebidir.</p>
+                <br>
+                <p>Sayın Başkanlık,</p>
+                <p>Türkiye Cumhuriyeti'nin taraf olduğu ILO 190 sayılı "İş Yerinde Şiddet ve Taciz Sözleşmesi"nin gerekliliklerinin çalışma hayatında tam olarak uygulanmadığını gözlemlemekteyiz.</p>
+                <p>Anayasal dilekçe hakkımı kullanarak; İş Kanunu'nda şiddet ve taciz tanımlarının sözleşmeye uygun genişletilmesini, denetimlerin artırılmasını ve mağdurları koruyucu mekanizmaların işletilmesini talep ediyorum.</p>
+                <p>Saygılarımla arz ederim.</p>
+            </div>
+        </div>
+
+        <div class="form-area">
+            <div class="form-card">
+                <h2>İmza Ver & CİMER'e İlet</h2>
+                <p style="color:#666; font-size:0.9rem;">Önce imzanız sisteme kaydedilecek, ardından CİMER metni otomatik hazırlanacaktır.</p>
+                
+                <form action="https://formsubmit.co/SENIN_EMAIL_ADRESINI_BURAYA_YAZ" method="POST" id="mainForm">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="javascript:openCimerModal()"> <div class="input-group">
+                        <label>Adınız</label>
+                        <input type="text" name="Ad" required placeholder="Adınız">
+                    </div>
+                    <div class="input-group">
+                        <label>Soyadınız</label>
+                        <input type="text" name="Soyad" required placeholder="Soyadınız">
+                    </div>
+                    <div class="input-group">
+                        <label>E-posta</label>
+                        <input type="email" name="Email" required placeholder="E-posta">
+                    </div>
+
+                    <div class="kvkk-row">
+                        <input type="checkbox" id="kvkkCheck" required disabled>
+                        <label for="kvkkCheck">
+                            <span class="kvkk-link" onclick="openKvkk()">KVKK Metni</span>'ni okudum ve onaylıyorum.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="sign-btn" id="submitBtn">İMZALA VE DEVAM ET</button>
+                    <p style="text-align:center; font-size:0.75rem; color:#999; margin-top:10px;">🔒 Verileriniz 6698 Sayılı KVKK kapsamında korunur.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="kvkkModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Aydınlatma Metni</h2>
+                <span class="close-btn" onclick="closeKvkk()">&times;</span>
+            </div>
+            <div class="modal-content">
+                <p><strong>Veri Sorumlusu:</strong> [ADINIZ SOYADINIZ]</p>
+                <p>Bu form aracılığıyla toplanan ad, soyad ve e-posta bilgileriniz, yalnızca ILO 190 imza kampanyasının takibi amacıyla 6698 sayılı KVKK'ya uygun olarak işlenmektedir. Verileriniz resmi makamlar haricinde üçüncü kişilerle paylaşılmaz.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="action-btn" style="background:#2a9d8f; color:white;" onclick="acceptKvkk()">Okudum, Onaylıyorum</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cimerModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2 style="color:#2a9d8f;">✅ İmzanız Kaydedildi!</h2>
+                <span class="close-btn" onclick="closeCimer()">&times;</span>
+            </div>
+            <div class="modal-content">
+                <p>Harika! İmzanız veritabanımıza eklendi. Şimdi bu talebi <strong>doğrudan Cumhurbaşkanlığı İletişim Merkezi'ne (CİMER)</strong> ileterek etkinin artmasını sağlayabilirsin.</p>
+                
+                <p><strong>1. Adım:</strong> Aşağıdaki metni kopyalayın.</p>
+                <textarea id="dilekceText" class="cimer-text-area" readonly>Sayın Yetkili,
+Türkiye Cumhuriyeti'nin taraf olduğu ILO 190 sayılı "İş Yerinde Şiddet ve Taciz Sözleşmesi"nin iç hukukumuzdaki yansımalarının yetersiz kaldığını düşünmekteyim. Çalışma hayatında şiddet ve tacizin önlenmesi, "sıfır tolerans" ilkesinin benimsenmesi ve denetim mekanizmalarının ILO standartlarına tam uyumlu hale getirilmesi için gerekli yasal düzenlemelerin yapılmasını ve denetimlerin artırılmasını, anayasal dilekçe hakkım kapsamında talep ediyorum.
+Gereğini bilgilerinize arz ederim.</textarea>
+                
+                <button class="action-btn copy-btn" onclick="copyText()">📋 Metni Kopyala</button>
+
+                <p style="margin-top:20px;"><strong>2. Adım:</strong> CİMER'e gidip "İstek/Öneri" kısmına yapıştırın.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="https://www.cimer.gov.tr" target="_blank" class="cimer-go-btn">🇹🇷 CİMER'e Git ve Gönder</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elementleri
+        const kvkkModal = document.getElementById('kvkkModal');
+        const cimerModal = document.getElementById('cimerModal');
+        const checkbox = document.getElementById('kvkkCheck');
+        const mainForm = document.getElementById('mainForm');
+
+        // KVKK İşlemleri
+        function openKvkk() { kvkkModal.style.display = 'flex'; }
+        function closeKvkk() { kvkkModal.style.display = 'none'; }
+        function acceptKvkk() {
+            checkbox.disabled = false;
+            checkbox.checked = true;
+            closeKvkk();
+        }
+
+        // CİMER İşlemleri
+        function closeCimer() { cimerModal.style.display = 'none'; }
+        
+        function copyText() {
+            const copyText = document.getElementById("dilekceText");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // Mobil uyum için
+            navigator.clipboard.writeText(copyText.value).then(() => {
+                alert("Metin kopyalandı! Şimdi CİMER butonuna basabilirsiniz.");
+            });
+        }
+
+        // Form Gönderim Yakalama
+        // FormSubmit normalde sayfayı yönlendirir, bunu engelleyip CİMER modalını açıyoruz
+        mainForm.addEventListener('submit', function(e) {
+            // FormSubmit'in kendi "success" sayfasına gitmemesi için target iframe hilesi yapılabilir
+            // Ancak en basit yöntem: Form submit olduktan sonra kullanıcıyı uyarmaktır.
+            // Bu demo için submit olayını biraz geciktirip modal açacağız.
+            
+            // Not: Gerçek bir backend olmadan form submit edildiğini %100 anlayıp
+            // sayfada kalmak zordur. FormSubmit.co default olarak "next" parametresini kullanır.
+            // Burada kullanıcıyı yönlendirmek yerine CİMER sayfasına hazırlıyoruz.
+        });
+
+        // URL Kontrolü (FormSubmit geri döndüğünde)
+        // Eğer FormSubmit "_next" parametresini bu sayfaya geri ayarlarsak (örn: index.html?success=true)
+        // Sayfa yüklendiğinde CİMER modalını açabiliriz.
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('success')) {
+                cimerModal.style.display = 'flex';
+            }
+        }
+    </script>
+    
+    </body>
+</html>
