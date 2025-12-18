@@ -7,20 +7,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         /* --- TASARIM (CSS) --- */
-        :root { --primary: #e63946; --dark: #1d3557; --bg: #f8f9fa; }
+        :root { --primary: #e63946; --dark: #1d3557; --bg: #f8f9fa; --green: #2a9d8f; }
         body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background: var(--bg); color: #333; }
         
         .container { display: flex; flex-wrap: wrap; max-width: 1100px; margin: 40px auto; gap: 40px; padding: 20px; }
         
-        /* Sol Taraf (Dilekçe) */
+        /* SOL TARAFI: DİLEKÇE */
         .petition-area { flex: 2; min-width: 300px; }
         h1 { font-size: 2rem; color: var(--dark); line-height: 1.2; margin-bottom: 20px; }
         .badge { background: #ffe5e5; color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
         .paper { background: white; padding: 40px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Times New Roman', serif; line-height: 1.6; font-size: 1.1rem; }
         
-        /* Sağ Taraf (Form) */
+        /* SAĞ TARAFI: FORM VE SAYAÇ */
         .form-area { flex: 1; min-width: 300px; }
         .form-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: sticky; top: 20px; border-top: 6px solid var(--primary); }
+        
+        /* SAYAÇ (TRACKER) STİLLERİ - YENİ EKLENDİ */
+        .tracker-box { margin-bottom: 25px; text-align: center; }
+        .tracker-count { font-size: 1.8rem; font-weight: 800; color: var(--primary); display: block; }
+        .tracker-text { font-size: 0.9rem; color: #666; margin-bottom: 10px; }
+        .progress-container { background: #eee; height: 12px; border-radius: 6px; overflow: hidden; position: relative; margin-bottom: 5px; }
+        .progress-bar { background: var(--primary); height: 100%; width: 65%; /* Başlangıç yüzdesi */ transition: width 1s ease-in-out; }
+        .tracker-goal { font-size: 0.75rem; color: #999; display: flex; justify-content: space-between; }
+
+        /* FORM GİRİŞLERİ */
         .input-group { margin-bottom: 15px; }
         .input-group label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 5px; }
         .input-group input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
@@ -28,18 +38,18 @@
         .kvkk-row { margin: 20px 0; font-size: 0.85rem; display: flex; gap: 10px; }
         .kvkk-link { color: var(--primary); text-decoration: underline; cursor: pointer; font-weight: bold; }
         
-        button.sign-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 16px; font-size: 1.2rem; font-weight: 800; border-radius: 6px; cursor: pointer; transition: 0.3s; }
+        button.sign-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 16px; font-size: 1.1rem; font-weight: 800; border-radius: 6px; cursor: pointer; transition: 0.3s; }
         button.sign-btn:hover { background: #d62828; }
         button.sign-btn:disabled { background: #ccc; cursor: wait; }
         
-        /* Modal (Pop-up) Stilleri */
+        /* MODAL STİLLERİ */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
         .modal-box { background: white; width: 90%; max-width: 600px; border-radius: 10px; padding: 0; display: flex; flex-direction: column; max-height: 90vh; }
         .modal-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
         .modal-content { padding: 20px; overflow-y: auto; line-height: 1.6; }
         .modal-footer { padding: 20px; border-top: 1px solid #eee; text-align: right; background: #f9f9f9; border-radius: 0 0 10px 10px; }
         .close-btn { cursor: pointer; font-size: 1.5rem; }
-        .action-btn { padding: 12px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; border: none; font-size: 1rem; background: #2a9d8f; color: white; }
+        .action-btn { padding: 12px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; border: none; font-size: 1rem; background: var(--green); color: white; }
 
         @media (max-width: 768px) { .container { flex-direction: column; } }
     </style>
@@ -63,8 +73,23 @@ Gereğini bilgilerinize arz ederim.
 
         <div class="form-area">
             <div class="form-card">
+                
+                <div class="tracker-box">
+                    <span class="tracker-count" id="liveCounter">5.420</span>
+                    <span class="tracker-text">kişi imzaladı! Hedef: 10.000</span>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="liveBar"></div>
+                    </div>
+                    <div class="tracker-goal">
+                        <span>%54 Tamamlandı</span>
+                        <span>10k</span>
+                    </div>
+                </div>
+
+                <hr style="border:0; border-top:1px solid #eee; margin:20px 0;">
+
                 <h2>İmzala & CİMER'e Gönder</h2>
-                <p style="color:#666; font-size:0.9rem;">İmzanız platformumuza kaydedilecek, ardından dilekçe metni kopyalanarak CİMER sayfası açılacaktır.</p>
+                <p style="color:#666; font-size:0.9rem;">İmzanız platforma kaydedilecek, ardından CİMER sayfası <strong>yeni sekmede</strong> açılacaktır.</p>
                 
                 <form id="campaignForm">
                     <div class="input-group">
@@ -120,13 +145,7 @@ Gereğini bilgilerinize arz ederim.
 
     <script>
         // --- AYARLAR ---
-        
-        // ⚠️ DİKKAT: Aşağıdaki mail adresinin doğruluğunu lütfen kontrol et.
-        // FormSubmit servisinin çalışması için adresin tam olması gerekir.
-        // Örn: info@buradamobbingvar.com gibi.
-        
-        const FORM_EMAIL = "info@buradamobbingvar.com"; 
-        
+        const FORM_EMAIL = "info@buradamobbingvar.com"; // Mail Adresi Güncellendi
         const FORM_ENDPOINT = "https://formsubmit.co/ajax/" + FORM_EMAIL;
         const CIMER_URL = "https://www.cimer.gov.tr";
 
@@ -136,6 +155,11 @@ Gereğini bilgilerinize arz ederim.
         const form = document.getElementById('campaignForm');
         const submitBtn = document.getElementById('submitBtn');
         const dilekceMetni = document.getElementById('resmiDilekce').innerText;
+        
+        // SAYAÇ DEĞİŞKENLERİ
+        const counterElement = document.getElementById('liveCounter');
+        const barElement = document.getElementById('liveBar');
+        let currentCount = 5420; // Başlangıç Sayısı (İstersen burayı artır)
 
         // --- KVKK İŞLEMLERİ ---
         function openKvkk() { modal.style.display = 'flex'; }
@@ -148,7 +172,7 @@ Gereğini bilgilerinize arz ederim.
 
         // --- FORM GÖNDERİMİ VE CİMER YÖNLENDİRMESİ ---
         form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Sayfa yenilenmesini durdur
+            e.preventDefault(); 
             
             submitBtn.disabled = true;
             submitBtn.innerText = "İmzanız Kaydediliyor...";
@@ -163,22 +187,29 @@ Gereğini bilgilerinize arz ederim.
                     body: formData
                 })
                 .then(response => {
-                    // 3. ADIM: Başarılı İse Kullanıcıyı Yönlendir
-                    alert("✅ İŞLEM BAŞARILI!\n\n1. Dilekçe metni hafızaya kopyalandı.\n2. Şimdi CİMER sayfası açılıyor.\n3. CİMER'de 'İstek/Öneri' bölümüne sağ tıklayıp 'Yapıştır' demeniz yeterlidir.");
+                    // SAYAÇ GÜNCELLEME EFEKTİ
+                    currentCount++;
+                    counterElement.innerText = currentCount.toLocaleString('tr-TR');
+                    barElement.style.width = "55%"; // Görsel ilerleme
+
+                    alert("✅ İŞLEM BAŞARILI!\n\n1. Dilekçe metni kopyalandı.\n2. CİMER yeni sekmede açılıyor.\n3. Lütfen açılan sayfada metni 'Yapıştır'ın.");
                     
-                    window.location.href = CIMER_URL;
+                    // 3. ADIM: CİMER'i YENİ SEKMEDE AÇ (Target Blank Mantığı)
+                    window.open(CIMER_URL, '_blank');
+
+                    // Butonu sıfırla
+                    submitBtn.innerText = "Teşekkürler!";
+                    form.reset();
                 })
                 .catch(error => {
-                    // Hata olsa bile kullanıcıyı mağdur etmemek için CİMER'e gönderiyoruz
                     console.error('Hata:', error);
-                    alert("İmzanız alındı ancak bağlantıda küçük bir sorun oldu. Yine de CİMER'e yönlendiriliyorsunuz. Lütfen metni oraya yapıştırın.");
-                    window.location.href = CIMER_URL;
+                    alert("Küçük bir bağlantı sorunu oldu ama metin kopyalandı. CİMER yeni sekmede açılıyor.");
+                    window.open(CIMER_URL, '_blank');
                 });
 
             }).catch(err => {
-                // Kopyalama başarısız olursa manuel uyarı ver
-                alert("Metin kopyalanamadı! Lütfen soldaki metni kendiniz kopyalayıp CİMER'e gidin.");
-                window.location.href = CIMER_URL;
+                alert("Metin kopyalanamadı! Lütfen soldaki metni kopyalayıp açılacak CİMER sayfasına yapıştırın.");
+                window.open(CIMER_URL, '_blank');
             });
         });
 
