@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>ILO 190 Uygulansın | İmza Kampanyası</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section id="petition-container">
+        <h1>ILO 190 İş Yerinde Şiddet ve Tacize Karşı İmza Ver</h1>
+        
+        <div class="dilekce-metni">
+            <h3>TÜRKİYE BÜYÜK MİLLET MECLİSİ BAŞKANLIĞINA</h3>
+            <p>İlgi: 17.04.2021 tarihli ve 31457 sayılı Resmi Gazete’de yayımlanan 7312 sayılı Kanun.</p>
+            <p>Aşağıda imzası bulunan ben, ILO’nun 190 sayılı Şiddet ve Taciz Sözleşmesi’nin getirdiği standartların çalışma hayatının tüm alanlarında tavizsiz uygulanmasını, denetim mekanizmalarının etkinleştirilmesini talep ediyorum...</p>
+        </div>
+
+        <form id="imzaFormu">
+            <input type="text" id="adSoyad" placeholder="Adınız Soyadınız" required>
+            <input type="email" id="email" placeholder="E-posta Adresiniz" required>
+            
+            <div class="kvkk-onay">
+                <input type="checkbox" id="kvkkCheck" required>
+                <label for="kvkkCheck">
+                    <a href="javascript:void(0)" onclick="openModal()">KVKK Aydınlatma Metni</a>'ni okudum ve onaylıyorum.
+                </label>
+            </div>
+            
+            <button type="submit">İMZALA VE GÖNDER</button>
+        </form>
+    </section>
+
+    <div id="kvkkModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>KVKK Aydınlatma Metni</h2>
+            <div id="kvkkContent">
+                6698 sayılı Kişisel Verilerin Korunması Kanunu uyarınca, adınız ve e-posta adresiniz sadece bu dilekçenin takibi amacıyla işlenecektir...
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
