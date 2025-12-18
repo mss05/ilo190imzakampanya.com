@@ -2,41 +2,93 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ILO 190 Uygulansın | İmza Kampanyası</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <section id="petition-container">
-        <h1>ILO 190 İş Yerinde Şiddet ve Tacize Karşı İmza Ver</h1>
-        
-        <div class="dilekce-metni">
-            <h3>TÜRKİYE BÜYÜK MİLLET MECLİSİ BAŞKANLIĞINA</h3>
-            <p>İlgi: 17.04.2021 tarihli ve 31457 sayılı Resmi Gazete’de yayımlanan 7312 sayılı Kanun.</p>
-            <p>Aşağıda imzası bulunan ben, ILO’nun 190 sayılı Şiddet ve Taciz Sözleşmesi’nin getirdiği standartların çalışma hayatının tüm alanlarında tavizsiz uygulanmasını, denetim mekanizmalarının etkinleştirilmesini talep ediyorum...</p>
+    <div class="container">
+        <div class="petition-content">
+            <header>
+                <span class="badge">İMZA KAMPANYASI</span>
+                <h1>ILO 190 "İş Yerinde Şiddet ve Taciz" Sözleşmesi Etkin Şekilde Uygulansın</h1>
+            </header>
+            
+            <div class="dilekce-paper">
+                <h3>TÜRKİYE BÜYÜK MİLLET MECLİSİ BAŞKANLIĞINA</h3>
+                <h3>ÇALIŞMA VE SOSYAL GÜVENLİK BAKANLIĞINA</h3>
+                <br>
+                <p><strong>KONU:</strong> Türkiye tarafından onaylanan ILO 190 Sayılı Sözleşme'nin iç hukuktaki uygulamalarının takibi ve iş yerinde şiddetin önlenmesi talebidir.</p>
+                <br>
+                <p>Türkiye Cumhuriyeti, Uluslararası Çalışma Örgütü’nün (ILO) 190 sayılı "İş Yerinde Şiddet ve Taciz Sözleşmesi"ni 2021 yılında onaylamış ve ilgili kanun 25 Haziran 2021 tarihinde yürürlüğe girmiştir.</p>
+                <p>Ancak, yasalaşma süreci tamamlanmış olsa da, sözleşmenin getirdiği koruyucu hükümlerin iş hayatının pratiğine tam olarak yansımadığı görülmektedir. İş yerinde şiddet ve tacizden arınmış bir çalışma ortamı temel bir insan hakkıdır.</p>
+                <p>Bu kapsamda, aşağıda kimlik bilgileri bulunan bir Türkiye Cumhuriyeti vatandaşı olarak;</p>
+                <ul>
+                    <li>ILO 190 hükümlerine uygun olarak, şiddet ve taciz tanımlarının iş kanunlarımızda netleştirilmesini,</li>
+                    <li>Denetim mekanizmalarının artırılmasını ve "sıfır tolerans" ilkesinin benimsenmesini,</li>
+                    <li>Mağdurların korunmasına yönelik etkin mekanizmaların hayata geçirilmesini talep ediyorum.</li>
+                </ul>
+                <p>Gereğini saygılarımla arz ederim.</p>
+            </div>
         </div>
 
-        <form id="imzaFormu">
-            <input type="text" id="adSoyad" placeholder="Adınız Soyadınız" required>
-            <input type="email" id="email" placeholder="E-posta Adresiniz" required>
-            
-            <div class="kvkk-onay">
-                <input type="checkbox" id="kvkkCheck" required>
-                <label for="kvkkCheck">
-                    <a href="javascript:void(0)" onclick="openModal()">KVKK Aydınlatma Metni</a>'ni okudum ve onaylıyorum.
-                </label>
+        <div class="form-sidebar">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 70%;"></div>
             </div>
-            
-            <button type="submit">İMZALA VE GÖNDER</button>
-        </form>
-    </section>
+            <p class="counter"><strong>15.420</strong> kişi imzaladı, hedef 20.000!</p>
+
+            <form id="campaignForm">
+                <div class="form-group">
+                    <label>Adınız</label>
+                    <input type="text" name="entry.AD_ID" id="name" placeholder="Adınız" required>
+                </div>
+                <div class="form-group">
+                    <label>Soyadınız</label>
+                    <input type="text" name="entry.SOYAD_ID" id="surname" placeholder="Soyadınız" required>
+                </div>
+                <div class="form-group">
+                    <label>E-posta Adresiniz</label>
+                    <input type="email" name="entry.EMAIL_ID" id="email" placeholder="ornek@email.com" required>
+                </div>
+
+                <div class="kvkk-box">
+                    <input type="checkbox" id="kvkkCheckbox" disabled required>
+                    <label for="kvkkCheckbox">
+                        <a href="javascript:void(0)" onclick="openModal()">KVKK Aydınlatma Metni</a>'ni okudum, anladım ve onaylıyorum.
+                    </label>
+                    <small class="note">*Metni okuyup onaylamadan kutucuk işaretlenemez.</small>
+                </div>
+
+                <button type="submit" id="submitBtn">İMZALIYORUM</button>
+            </form>
+            <p class="security-note">🔒 Bilgileriniz 6698 sayılı KVKK kapsamında korunmaktadır.</p>
+        </div>
+    </div>
 
     <div id="kvkkModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>KVKK Aydınlatma Metni</h2>
-            <div id="kvkkContent">
-                6698 sayılı Kişisel Verilerin Korunması Kanunu uyarınca, adınız ve e-posta adresiniz sadece bu dilekçenin takibi amacıyla işlenecektir...
+            <div class="modal-header">
+                <h2>Kişisel Verilerin Korunması Hakkında Aydınlatma Metni</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h3>Veri Sorumlusu</h3>
+                <p>İşbu aydınlatma metni, ILO 190 İmza Platformu (bundan böyle "Platform" olarak anılacaktır) kurucusu <strong>[BURAYA ADINIZI VEYA KURUM ADINI YAZIN]</strong> tarafından veri sorumlusu sıfatıyla hazırlanmıştır.</p>
+
+                <h3>Kişisel Verilerin İşlenme Amacı</h3>
+                <p>Tarafınıza ait ad, soyad ve e-posta adresi verileri; ILO 190 Sözleşmesi'nin uygulanmasına yönelik talebin ilgili kamu kurumlarına (TBMM, Bakanlıklar) iletilmesi, imza kampanyasının doğrulanması ve istatistiksel raporlama yapılması amacıyla 6698 sayılı KVKK'nın 5. ve 6. maddelerine uygun olarak işlenmektedir.</p>
+
+                <h3>Kişisel Verilerin Aktarılması</h3>
+                <p>Toplanan kişisel verileriniz, dilekçe hakkının kullanılması kapsamında sadece Türkiye Büyük Millet Meclisi ve T.C. Çalışma ve Sosyal Güvenlik Bakanlığı ile paylaşılabilir. Üçüncü taraf ticari kuruluşlarla asla paylaşılmaz.</p>
+
+                <h3>Haklarınız</h3>
+                <p>KVKK'nın 11. maddesi uyarınca veri sorumlusuna başvurarak kişisel verilerinizin silinmesini veya yok edilmesini talep etme hakkına sahipsiniz.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="accept-btn" onclick="acceptKVKK()">Okudum, Anladım, Onaylıyorum</button>
             </div>
         </div>
     </div>
